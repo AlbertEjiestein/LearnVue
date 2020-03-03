@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app2">
+        <ul>
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+    </div>
+    <div id="app">
+        <h2>计数时间:{{counter}}</h2>
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        // 响应式原理
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                movies:['奥特曼','黑猫警长','西游记','水浒传']
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                add: function(){
+                    this.counter++
+                },
+                sub: function(){
+                    this.counter--
+                }
+            }
+        })    
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 3.使用组件：必须在vue的实例内使用 -->
+    <cpn2></cpn2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    // 1.创建子组件构造器
+    const cpnC1 = Vue.extend({
+      template:`
+        <div>
+          <input type='date'>
+          <p>今天已经是夏天了</p>
+        </div>`
+    });
+
+    // 2.创建父组件构造器
+    const cpnC2 = Vue.extend({
+      template:`
+        <div>
+          <input type='date'>
+          <p>今天已经是冬天了</p>
+          <cpn1></cpn1>
+        </div>`,
+      components:{
+        cpn1:cpnC1
+      }
+    })
+
+    const app = new Vue({
+      el:'#app',
+      components:{
+        cpn2:cpnC2
+      }
+    })
+  </script>
+</body>
+</html>

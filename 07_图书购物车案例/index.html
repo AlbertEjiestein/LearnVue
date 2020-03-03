@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div v-if="books.length">
+      <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>书籍名称</th>
+              <th>出版日期</th>
+              <th>价格</th>
+              <th>购买数量</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item,index) in books">
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.date}}</td>
+              <!-- 过滤器的使用：本质是一个函数，要过滤的内容会作为参数自动传入函数中 -->
+              <td>{{item.price | showPrice}}</td>
+              <td>
+                <!-- 设置count小于等于1时不能继续减了 -->
+                <button @click="decreament(index)" :disabled="item.count <= 1">-</button>
+                {{item.count}}
+                <button @click="increament(index)">+</button>
+              </td>
+              <td><button @click="removeHandle(index)">移除</button></td>
+            </tr>
+          </tbody>
+      </table>
+      <h2>总价格：{{totalPrice | showPrice}}</h2>
+    </div>
+    <div v-else>购物车为空</div>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

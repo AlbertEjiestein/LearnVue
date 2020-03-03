@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <my-cpn></my-cpn>
+  </div>
+  <!-- 1.使用script -->
+  <script type="text/x-template" id="tem">
+    <div>
+      <input type='date'>
+      <p>今天已经是夏天了</p>
+    </div>
+  </script>
+
+  <!-- 2.使用模板标签 -->
+  <template id="tem2">
+    <div>
+      <input type='date'>
+      <p>今天已经是冬天了</p>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      // 2.注册局部组件
+      components:{
+        'my-cpn':{
+          template:'#tem2'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

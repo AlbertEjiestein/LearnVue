@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 父组件模板 -->
+  <div id="app">
+    <cpn @item-click="cpnClick"></cpn>
+  </div>
+  <!-- 子组件模板 -->
+  <template id="cpn">
+    <div>
+      <button v-for="item in categories" @click="btnClick(item)">
+        {{item.name}}
+      </button>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    // 子组件
+    const cpn = {
+      template:'#cpn',
+      data(){
+        return {
+          categories:[
+            {id:'aaa',name:'蛋炒饭'},
+            {id:'bbb',name:'蛋炒粉'},
+            {id:'ccc',name:'蛋炒面'},
+            {id:'ddd',name:'蛋炒馒头'}
+          ]
+        }
+      },
+      methods:{
+        btnClick(item){
+          // 这个地方使用驼峰方式会出错
+          this.$emit('item-click',item)
+        }
+      }
+    }
+    // 父组件
+    const app = new Vue({
+      el:'#app',
+      components:{
+        cpn
+      },
+      methods:{
+        cpnClick(item){
+          console.log(item)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+

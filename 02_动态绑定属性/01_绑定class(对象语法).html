@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+
+    .active{
+      color:red
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- 通过active属性，将model的active传给view，MVVM -->
+    <!-- <h2 v-bind:class="active">{{message}}</h2> -->
+    <!-- 对象语法，动态控制该class类的使用 -->
+    <!-- <h2 :class="{active:isActive,line:isLine}" v-cloak>{{message}}</h2> -->
+    <!-- 未绑定的class和v-bind的class合并 -->
+    <h2 class="title" :class="{active:isActive,line:isLine}" v-cloak>{{message}}</h2>
+    <!-- 以上是通过对象直接添加在class中，下便通过按钮控制avtive的使用 -->
+    <button v-on:click="getClick">变色</button>
+    
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  var app = new Vue({
+        el: '#app',
+        data: {
+            message:'hello',
+            // active:'active'
+            isActive:true,
+            isLine:true
+        },
+        methods:{
+          getClick: function(){
+            this.isActive = !this.isActive;
+          }
+        }
+    })    
+</script>
+</body>
+</html>

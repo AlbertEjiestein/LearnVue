@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <select name="abc" id="" v-model="fruit">
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="榴莲">榴莲</option>
+      <option value="葡萄">葡萄</option>
+    </select>
+    <h2>{{fruit}}</h2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    var app = new Vue({
+          el: '#app',
+          data: {
+            fruit:'苹果'
+          }
+      })    
+  </script>
+</body>
+</html>

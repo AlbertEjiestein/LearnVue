@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 3.使用组件：必须在vue的实例内使用 -->
+    <cpn></cpn>
+  </div>
+  <template id="tem">
+    <div>标题：{{title}}</div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    // 2.使用组件语法糖构建组件
+    Vue.component('cpn',{
+      template:'#tem',
+      data(){
+        return {
+          title:'hello world'
+        }
+      }
+    })
+
+    // 1.构建vue实例
+    const app = new Vue({
+      el:'#app'
+    })
+  </script>
+</body>
+</html>
